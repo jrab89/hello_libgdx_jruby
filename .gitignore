@@ -1,0 +1,4 @@
+.jbundler
+pkg
+.DS_Store
+*.jar

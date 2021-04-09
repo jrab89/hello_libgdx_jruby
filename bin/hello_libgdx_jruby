@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+require 'jbundler'
+
+java_import 'com.badlogic.gdx.ApplicationAdapter'
+java_import 'com.badlogic.gdx.backends.lwjgl.LwjglApplication'
+java_import 'com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration'
+java_import 'com.badlogic.gdx.graphics.g2d.BitmapFont'
+java_import 'com.badlogic.gdx.graphics.g2d.SpriteBatch'
+
+class LibgdxJrubyGame < ApplicationAdapter
+
+  def create
+    @batch = SpriteBatch.new
+    @font = BitmapFont.new
+  end
+
+  def render
+    @batch.begin
+    @font.draw(@batch, "hello libgdx!", 100, 100)
+    @batch.end
+  end
+end
+
+LwjglApplication.new(LibgdxJrubyGame.new,
+                     LwjglApplicationConfiguration.new)
